@@ -1,0 +1,559 @@
+/* ──────────────────────────────────────────
+   1. VARIABLES DE COLOR Y TIPOGRAFÍA
+   ────────────────────────────────────────── */
+:root {
+  /* Paleta de colores */
+  --color-bg:        #F7F3ED;   /* Fondo principal cálido */
+  --color-secondary: #EFD8D6;   /* Secundario rosado suave */
+  --color-accent:    #DBA1A2;   /* Acento rosa-melocotón */
+  --color-soft:      #C2C6B9;   /* Detalles verdes suaves */
+  --color-dark:      #422B23;   /* Texto oscuro/marrón profundo */
+  --color-dark-70:   rgba(66, 43, 35, 0.7);
+  --color-dark-20:   rgba(66, 43, 35, 0.12);
+ 
+  /* Tipografías */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Poppins', 'Open Sans', sans-serif;
+ 
+  /* Espaciado base */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  6rem;
+ 
+  /* Radios y sombras */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+ 
+  --shadow-sm: 0 2px 8px rgba(66, 43, 35, 0.08);
+  --shadow-md: 0 6px 20px rgba(66, 43, 35, 0.12);
+  --shadow-lg: 0 12px 40px rgba(66, 43, 35, 0.14);
+ 
+  /* Transiciones */
+  --transition: 0.28s ease;
+}
+ 
+/* ──────────────────────────────────────────
+   2. RESET Y BASE GLOBAL
+   ────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+ 
+body {
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+ 
+img {
+  display: block;
+  max-width: 100%;
+}
+ 
+/* ──────────────────────────────────────────
+   3. HEADER
+   ────────────────────────────────────────── */
+.header {
+  background-color: var(--color-accent);
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+ 
+/* Círculo decorativo de fondo */
+.header::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+}
+ 
+/* Segundo círculo decorativo */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 220px;
+  height: 220px;
+  background: rgba(66, 43, 35, 0.06);
+  border-radius: 50%;
+  pointer-events: none;
+}
+ 
+.header__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+ 
+/* Etiqueta pequeña sobre el nombre */
+.header__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  opacity: 0.65;
+  margin-bottom: var(--space-sm);
+}
+ 
+/* Nombre principal */
+.header__name {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-dark);
+  margin-bottom: var(--space-md);
+}
+ 
+/* Cursiva elegante para el apellido */
+.header__name em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-dark);
+  opacity: 0.85;
+}
+ 
+/* Subtítulo / tagline */
+.header__tagline {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-dark);
+  opacity: 0.75;
+  letter-spacing: 0.04em;
+}
+ 
+/* Línea decorativa debajo del tagline */
+.header__divider {
+  width: 56px;
+  height: 3px;
+  background-color: var(--color-dark);
+  opacity: 0.25;
+  border-radius: 2px;
+  margin: var(--space-md) auto 0;
+}
+ 
+/* ──────────────────────────────────────────
+   4. SECCIONES — BASE COMÚN
+   ────────────────────────────────────────── */
+.section {
+  padding: var(--space-lg) var(--space-md);
+}
+ 
+.section__inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+ 
+/* Número de sección */
+.section__label {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+  border-radius: 999px;
+  padding: 2px 12px;
+  margin-bottom: var(--space-sm);
+}
+ 
+/* Título de sección */
+.section__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  color: var(--color-dark);
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+ 
+/* Cuerpo de texto */
+.section__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: var(--space-md);
+}
+ 
+.section__body p {
+  font-size: 1rem;
+  color: var(--color-dark);
+  opacity: 0.82;
+  max-width: 65ch;
+}
+ 
+.section__body strong {
+  font-weight: 600;
+  color: var(--color-dark);
+  opacity: 1;
+}
+ 
+/* ──────────────────────────────────────────
+   5. VARIANTES DE FONDO POR SECCIÓN
+   ────────────────────────────────────────── */
+.section--light {
+  background-color: var(--color-bg);
+}
+ 
+.section--accent {
+  background-color: var(--color-secondary);
+}
+ 
+.section--soft {
+  background-color: #edeae4; /* Un tono intermedio cálido */
+}
+ 
+/* ──────────────────────────────────────────
+   6. TARJETAS DE DATOS RÁPIDOS (Sobre mí)
+   ────────────────────────────────────────── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+ 
+.data-card {
+  background: #fff;
+  border: 1px solid var(--color-dark-20);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-sm);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+ 
+.data-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+ 
+.data-card__icon {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+}
+ 
+.data-card__value {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+ 
+.data-card__label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-dark);
+  opacity: 0.5;
+}
+ 
+/* ──────────────────────────────────────────
+   7. LÍNEA DE TIEMPO (Camino en tecnología)
+   ────────────────────────────────────────── */
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-top: var(--space-md);
+}
+ 
+/* Línea vertical */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-soft));
+  border-radius: 2px;
+}
+ 
+.timeline__item {
+  position: relative;
+  margin-bottom: var(--space-md);
+}
+ 
+.timeline__item:last-child {
+  margin-bottom: 0;
+}
+ 
+/* Punto en la línea de tiempo */
+.timeline__dot {
+  position: absolute;
+  left: -2.5rem;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  background-color: var(--color-accent);
+  border: 3px solid var(--color-bg);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+ 
+.timeline__content {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  box-shadow: var(--shadow-sm);
+  border-left: 3px solid var(--color-accent);
+}
+ 
+.timeline__content h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 4px;
+}
+ 
+.timeline__content p {
+  font-size: 0.9rem;
+  color: var(--color-dark);
+  opacity: 0.7;
+}
+ 
+/* ──────────────────────────────────────────
+   8. TARJETAS DE OBJETIVOS
+   ────────────────────────────────────────── */
+.goal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+ 
+.goal-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+  border-bottom: 3px solid var(--color-accent);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+ 
+.goal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+ 
+.goal-card__icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+ 
+.goal-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 8px;
+}
+ 
+.goal-card p {
+  font-size: 0.88rem;
+  color: var(--color-dark);
+  opacity: 0.68;
+  line-height: 1.6;
+}
+ 
+/* ──────────────────────────────────────────
+   9. TARJETAS DE HOBBIES
+   ────────────────────────────────────────── */
+.hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+ 
+.hobby-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+ 
+/* Borde decorativo superior */
+.hobby-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-soft));
+}
+ 
+.hobby-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+ 
+.hobby-card__icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+ 
+.hobby-card__title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: var(--space-xs);
+}
+ 
+.hobby-card__desc {
+  font-size: 0.9rem;
+  color: var(--color-dark);
+  opacity: 0.68;
+  line-height: 1.65;
+}
+ 
+/* ──────────────────────────────────────────
+   10. FOOTER
+   ────────────────────────────────────────── */
+.footer {
+  background-color: var(--color-dark);
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+}
+ 
+.footer__inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+ 
+.footer__name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-bg);
+  letter-spacing: 0.02em;
+}
+ 
+.footer__role {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+ 
+/* Línea separadora del footer */
+.footer__divider {
+  width: 40px;
+  height: 2px;
+  background-color: var(--color-accent);
+  opacity: 0.5;
+  border-radius: 2px;
+  margin: var(--space-md) auto;
+}
+ 
+.footer__copy {
+  font-size: 0.78rem;
+  color: var(--color-bg);
+  opacity: 0.4;
+  letter-spacing: 0.04em;
+}
+ 
+/* ──────────────────────────────────────────
+   11. RESPONSIVE — MÓVIL
+   ────────────────────────────────────────── */
+@media (max-width: 640px) {
+ 
+  /* Header */
+  .header {
+    padding: var(--space-lg) var(--space-sm);
+  }
+ 
+  .header__name {
+    font-size: 2.6rem;
+  }
+ 
+  /* Secciones con menos padding en móvil */
+  .section {
+    padding: var(--space-md) var(--space-sm);
+  }
+ 
+  /* Tarjetas de datos en columna única si son muy pequeñas */
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+ 
+  /* Objetivos en columna única */
+  .goal-grid {
+    grid-template-columns: 1fr;
+  }
+ 
+  /* Hobbies en columna única */
+  .hobby-grid {
+    grid-template-columns: 1fr;
+  }
+ 
+  /* Timeline con menos padding */
+  .timeline {
+    padding-left: 2rem;
+  }
+ 
+  .timeline__dot {
+    left: -2rem;
+  }
+ 
+  /* Hobby card con menos padding horizontal */
+  .hobby-card {
+    padding: var(--space-md);
+  }
+ 
+  /* Footer */
+  .footer {
+    padding: var(--space-md) var(--space-sm);
+  }
+}
+ 
+@media (max-width: 400px) {
+  /* Datos rápidos en columna única para pantallas muy pequeñas */
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
